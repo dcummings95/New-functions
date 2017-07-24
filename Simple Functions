@@ -1,0 +1,4 @@
+function Write-Message
+{
+	Write-Host -Object " (-:  Dang! My function works!"
+}
