@@ -1,0 +1,24 @@
+
+function Say-Something
+{
+Param(
+[String]$Message
+)
+
+	[Void][System.Reflection.Assembly]::LoadWithPartialName("System.Speech");
+
+    $Voice = New-Object -TypeName System.Speech.Synthesis.SpeechSynthesizer;
+
+    if(!([String]::IsNullOrEmpty($Message)))
+    {
+        $voice.Speak($Message);
+    }
+    else
+    {
+        $voice.Speak("You did not tell me what you wanted me to say.");
+    }
+}
+if($(Get-ExecutionPolicy) -ne "RemoteSigned")
+{
+    Set-ExecutionPolicy -ExecutionPolicy "RemoteSigned" -Force -Verbose;
+}
